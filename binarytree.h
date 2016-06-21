@@ -31,7 +31,7 @@ class BinaryTree
 	{
       _floor(_root);
 	}
-	void path_add(int expectedSum)
+	void path_add(int expectedSum) //二叉树中某一值的路径
 	{
 		vector<int> path;
 		int currentSum=0;
