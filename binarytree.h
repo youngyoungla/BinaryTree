@@ -27,11 +27,53 @@ class BinaryTree
 		{
           _preorder(_root);
 		}
-	void floor_print()
+	void floor_print()//层次遍历
 	{
       _floor(_root);
 	}
+	void path_add(int expectedSum)
+	{
+		vector<int> path;
+		int currentSum=0;
+		_path_add(_root,path,currentSum,expectedSum);
+	}
 	private:
+	   void _path_add(BinaryTreeNode* root,vector<int>& path,int& currentSum,int expectedSum)
+	   {
+		   if(root==NULL)
+		   {
+			   return;
+		   }
+		   currentSum+=root->_val;
+		   path.push_back(root->_val);
+		   //叶子节点
+		   if(root->_left==NULL&&root->_right==NULL)
+		   {
+			   if(currentSum==expectedSum)
+				 {
+					 for(int i=0;i<path.size();i++)
+					 {
+						 cout<<path[i]<<"->";
+					 }
+					 cout<<endl;
+				 }
+				   currentSum-=root->_val;
+				   path.pop_back();
+			   	   return ;
+			  
+		   }
+
+		   //非叶子节点
+		   if(root->_left!=NULL)
+		   {
+			   _path_add(root->_left,path,currentSum,expectedSum);
+		   }
+		   if(root->_right!=NULL)
+		   {
+			   _path_add(root->_right,path,currentSum,expectedSum);
+		   }
+
+	   }
 	   void _floor(BinaryTreeNode* root)
 	   {
 		   if(root==NULL)
