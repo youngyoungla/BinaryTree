@@ -56,11 +56,7 @@ class BinaryTree
 						 cout<<path[i]<<"->";
 					 }
 					 cout<<endl;
-				 }
-				   currentSum-=root->_val;
-				   path.pop_back();
-			   	   return ;
-			  
+				 } 
 		   }
 
 		   //非叶子节点
@@ -72,7 +68,9 @@ class BinaryTree
 		   {
 			   _path_add(root->_right,path,currentSum,expectedSum);
 		   }
-
+           // 返回到父节点时，删除路径上最后一个值
+				   currentSum-=root->_val;
+				   path.pop_back();
 	   }
 	   void _floor(BinaryTreeNode* root)
 	   {
