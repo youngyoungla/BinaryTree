@@ -27,7 +27,12 @@ class BinaryTree
 		{
           _preorder(_root);
 		}
-	void floor_print()//层次遍历
+		void transfer_list()
+		{
+			BinaryTreeNode* pre=NULL;
+			_transfer_list(_root ,pre);
+		}
+	void floor_print() //层次遍历
 	{
       _floor(_root);
 	}
@@ -38,6 +43,22 @@ class BinaryTree
 		_path_add(_root,path,currentSum,expectedSum);
 	}
 	private:
+	   void _transfer_list(BinaryTreeNode* root,BinaryTreeNode* pre)
+	   {
+		   if(root==NULL)
+		   {
+			   return;
+		   }
+		   if(root->_left)
+		   {
+             pre=root;
+		   }
+		   else
+		   {
+			   root->_
+		   }
+
+	   }
 	   void _path_add(BinaryTreeNode* root,vector<int>& path,int& currentSum,int expectedSum)
 	   {
 		   if(root==NULL)
